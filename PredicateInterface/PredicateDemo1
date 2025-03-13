@@ -1,0 +1,41 @@
+package Predicates;
+
+import java.util.function.Predicate;
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		
+		//Predicate always takes one arguments or parameter and returns boolean value
+		//Itcan be used only when we have conditional checks in your programming
+		//Example 1
+		
+		Predicate <Integer> p = i ->(i>10);
+		System.out.println(p.test(20));  // true
+		System.out.println(p.test(5));  //false
+		
+		//Example 2 : Check the length of given String which is greater than 4 or not.
+		
+		Predicate<String> ps = i ->(i.length()>4);
+		System.out.println(ps.test("Kani"));
+		System.out.println(ps.test("Welcome"));
+		
+		//Example 3: Print array elements whose size is > 4 from array
+		//if the length of the name is greater than 4 then print that name
+		String [] names = {"Kani" ,"Logeswari" ,"Kayal","Nivi"};
+		
+		for(String name :names) {
+			
+			if(ps.test(name)) {  //if true
+				System.out.println(name);
+			}
+			
+			//or
+			if(name.length()>4) {
+				System.out.println(name);
+			}
+		}
+
+	}
+
+}
