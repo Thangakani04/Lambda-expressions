@@ -1,0 +1,59 @@
+package Predicates;
+
+import java.util.function.Predicate;
+
+public class Demo3 {
+	
+	//Joining predicates - and , or , negate
+	
+	//p1- checks the number is even
+	//p2 - checks the number is >50 or not
+
+	public static void main(String[] args) {
+		
+		int[] num = {2,5,7,50,15,34,58,90};
+		
+		Predicate<Integer> pr = n-> n%2==0;  //checks even
+		
+		Predicate<Integer> pr1 = n->(n>50);  //checks >50
+		
+		//and
+		System.out.println("Following are numbers even and greater than 50 ");
+		for(int n : num) {
+			//if(pr.test(n) && pr1.test(n)) 
+			if(pr.and(pr1).test(n))
+			{
+				System.out.println(n);
+			}
+		}
+		
+		//or
+		System.out.println("Following are numbers even or greater than 50 ");
+		for(int n : num) {
+		if(pr.or(pr1).test(n))
+		{
+			System.out.println(n);
+		}
+		}
+		
+		//negate
+		System.out.println("Following are negate numbers");
+		
+		for(int n : num) {
+			if(pr.negate().test(n))
+			{
+				System.out.println(n);
+			}
+			}
+		
+		
+		
+		
+		/*
+		 * for(Integer n : num) { if(pr.test(n)) { System.out.println(n); } }
+		 */
+		
+
+	}
+
+}
