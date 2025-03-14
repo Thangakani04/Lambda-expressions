@@ -1,0 +1,61 @@
+package Predicates;
+
+import java.util.ArrayList;
+import java.util.function.Predicate;
+
+class Employee{
+	
+	String ename;
+	int salary;
+	int experience;
+	
+	Employee(String name, int sal, int exp){
+		ename = name;
+		salary = sal;
+		experience=exp;
+	}
+	
+}
+
+public class Demo2 {
+
+	public static void main(String[] args) {
+		
+		//takes employee obj as argument and return the name of the employee if the salary is  >30 k && exp >3
+		
+		//Example-1
+		
+		Employee obj = new Employee("Kani" ,50000,5);  //when class of object is created constructor is invoked
+		//Employee obj = new Employee("Kani" ,50000,5);
+		//If both conditions are true then return true
+		//If one of the condition is false return false
+		//Passing object as argument or parameter
+		
+		Predicate<Employee> pr = e -> (e.salary >30000 && e.experience >5);
+		System.out.println(pr.test(obj));
+		
+		//Example-2
+		
+		//To validate multiple employee objects
+		
+		ArrayList<Employee> al = new ArrayList<Employee>();
+		al.add(new Employee("Nivi" ,30000,2));
+		al.add(new Employee("Loga" ,60000,6));
+		al.add(new Employee("Kayal",80000,9));
+		al.add(new Employee("Sweta",45000,4));
+		al.add(new Employee("Brindha",70000,5));
+		
+		for(Employee emp: al) {
+			if(emp.salary > 40000 && emp.experience>5) {
+			
+			//if(pr.test(emp)) {  // this condition is true when the lambda expression or function is true
+				System.out.println(emp.ename + " " + emp.salary);
+			}
+		}
+		
+		
+		
+
+	}
+
+}
